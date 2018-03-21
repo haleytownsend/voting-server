@@ -15,5 +15,4 @@ describe('store', () => {
       entries: ['Trainspotting', '28 Days Later']
     }));
   });
-
-}
+})

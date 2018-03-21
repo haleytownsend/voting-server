@@ -1,7 +1,7 @@
 import {List, Map} from 'immutable';
 import {expect} from 'chai';
 
-import {setEntries, next, vote} from '..src/core';
+import {setEntries, next, vote} from '../src/core';
 
 describe('application logic', () => {
   //set state
@@ -14,7 +14,7 @@ describe('application logic', () => {
         entries: List.of('Trainspotting', '28 Days Later')
       }));
     });
-    it('converts it to immutable', () => {
+    it('converts to immutable', () => {
       const state = Map();
       const entries = ['Trainspotting', '28 Days Later']
       const nextState = setEntries(state, entries);
@@ -52,7 +52,7 @@ describe('application logic', () => {
       expect(nextState).to.equal(Map({
         vote: Map({
           pair: List.of('Sunshine', 'Millions')
-        });
+        }),
         entries: List.of('127 Hours', "Trainspotting")
       }));
     });
@@ -64,15 +64,15 @@ describe('application logic', () => {
             'Trainspotting': 3,
             '28 Hours Later': 3
           })
-        });
+        }),
         entries: List.of('Sunshine', 'Millions', '127 Hours')
       });
       const nextState = next(state);
       expect(nextState).to.equal(Map({
         vote: Map({
           pair: List.of('Sunshine', 'Millions')
-        });
-        entries:pair: List.of('127 Hours','Trainspotting', '28 Days Later'),
+        }),
+        entries: List.of('127 Hours','Trainspotting', '28 Days Later'),
       }));
     });
     it('marks winner when just one entry is left', () => {
@@ -83,7 +83,7 @@ describe('application logic', () => {
             'Trainspotting': 4,
             '28 Days Later': 2
           })
-        });
+        }),
         entries: List()
       });
       const nextState = next(state);
@@ -98,7 +98,7 @@ describe('application logic', () => {
     const state = Map({
       pair: List.of('Trainspotting', '28 Days Later')
     });
-    const nextState = vote(state, 'Trainspotting');
+    const nextState = vote(state, 'Trainspotting')
     expect(nextState).to.equal(Map({
       pair: List.of('Trainspotting', '28 Days Later'),
       tally: Map({
